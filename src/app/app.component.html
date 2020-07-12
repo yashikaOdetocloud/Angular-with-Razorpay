@@ -1,0 +1,41 @@
+<h1>{{title}}</h1>
+<h2>Tshirt-Application</h2>
+<br>
+<div class="container">
+<div class="row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+    <input placeholder="Search T-shirts" class="form-control" type="text" 
+    [(ngModel)] = "searchText">
+  </div>
+</div>
+<br>
+<div >
+
+<table class="table table-striped table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th><button btn (click)="imageBtn()" class="btn btn-dark">{{showImage ? 'Hide' : 'Show'}} T-Shirt</button></th>
+      <th>BrandName</th>
+      <th>Price</th>
+      <th>Availabilty</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of allProducts | products: searchText">
+      <td><img *ngIf="showImage" src="{{product.imageUrlF}}" 
+        (mouseover)="over($event,product.imageUrlB)" (mouseout)="out($event,product.imageUrlF)"
+        [style.width.px]="width" [style.margin.px]="margin"></td>
+      <!-- <td><img *ngIf="showImage" [src]="imgSrc" 
+        (mouseover) = "imgSrc = '{{product.imageUrlB}}'"
+        (mouseout) = "imgSrc = '{{product.imageUrlF}}'"
+        [style.width.px]="width" [style.margin.px]="margin"></td> -->
+      <td>{{product.brandName}}</td>
+      <td>{{product.price}}</td>
+      <td [style.textcolor]="textcolor">{{product.availability}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
