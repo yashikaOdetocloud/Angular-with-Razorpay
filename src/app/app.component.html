@@ -16,15 +16,16 @@
 <table class="table table-striped table-dark">
   <thead class="thead-dark">
     <tr>
-      <th><button btn (click)="imageBtn()" class="btn btn-dark">{{showImage ? 'Hide' : 'Show'}} T-Shirt</button></th>
+      <th><button btn (click)="imageBtn()" class="btn btn-dark">{{showImage ? 'Show' : 'Hide'}} T-Shirt</button></th>
       <th>BrandName</th>
       <th>Price</th>
       <th>Availabilty</th>
+      <th>Buying Options</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let product of allProducts | products: searchText">
-      <td><img *ngIf="showImage" src="{{product.imageUrlF}}" 
+      <td><img *ngIf="!showImage" src="{{product.imageUrlF}}" 
         (mouseover)="over($event,product.imageUrlB)" (mouseout)="out($event,product.imageUrlF)"
         [style.width.px]="width" [style.margin.px]="margin"></td>
       <!-- <td><img *ngIf="showImage" [src]="imgSrc" 
@@ -34,6 +35,7 @@
       <td>{{product.brandName}}</td>
       <td>{{product.price}}</td>
       <td [style.textcolor]="textcolor">{{product.availability}}</td>
+      <td><button type="button" (click)="payBtn()" class="btn btn-dark">Buy Now</button></td>
     </tr>
   </tbody>
 </table>
